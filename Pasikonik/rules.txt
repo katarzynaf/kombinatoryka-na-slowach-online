@@ -1,0 +1,15 @@
+- Komputer wstawia wybrana litere lub dwie 
+  na koniec slowa(w zaleznosci od pozycji pasikonika) ,
+- Ty jako pasikonik mozesz skoczyc na sasiednia litere albo przeskoczyc jedna 
+  litere (pasikonik nie moze sie cofac),
+- Litery, na ktorych wyladuje pasikonik tworza slowo S,
+- Komputer  wygrywa, gdy w slowie S wystapi wzorzec,
+- Ty wygrywasz, gdy slowo S osiagnie zadana dlugosc, a wzorzec sie nie pojawi,
+- Liczba liter wstawianych przez komputer  zalezy od tego, 
+  gdzie znajduje sie pasikonik.
+
+  Jezeli jest on na przedostatniej wstawionej literze, 
+  to komputer  wstawia jedna litere.
+
+  Jezeli pasikonik jest na ostatniej literze, 
+  to komputer  wstawia dwie litery.
