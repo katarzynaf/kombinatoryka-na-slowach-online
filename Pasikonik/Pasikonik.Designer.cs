@@ -34,27 +34,28 @@ namespace Pasikonik
         private void InitializeComponent()
         {
             this.gameParameters = new System.Windows.Forms.GroupBox();
+            this.parametersPanel = new System.Windows.Forms.Panel();
+            this.startGameButton = new System.Windows.Forms.Button();
+            this.alphabetLengthTextBox = new System.Windows.Forms.TextBox();
+            this.maxLengthTextBox = new System.Windows.Forms.TextBox();
             this.alphabetGroupBox = new System.Windows.Forms.GroupBox();
             this.abcdAlphabet = new System.Windows.Forms.RadioButton();
             this.qwertyAlphabet = new System.Windows.Forms.RadioButton();
-            this.patternRichTextBox = new System.Windows.Forms.RichTextBox();
-            this.alphabetLengthTextBox = new System.Windows.Forms.TextBox();
-            this.alphabetLengthLabel = new System.Windows.Forms.Label();
-            this.startGameButton = new System.Windows.Forms.Button();
-            this.maxLengthTextBox = new System.Windows.Forms.TextBox();
-            this.difficultyLevelComboBox = new System.Windows.Forms.ComboBox();
-            this.difficultyLevelLabel = new System.Windows.Forms.Label();
             this.maxLengthLabel = new System.Windows.Forms.Label();
-            this.alphabetLabel = new System.Windows.Forms.Label();
+            this.alphabetLengthLabel = new System.Windows.Forms.Label();
+            this.difficultyLevelComboBox = new System.Windows.Forms.ComboBox();
+            this.patternRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.difficultyLevelLabel = new System.Windows.Forms.Label();
             this.patternLabel = new System.Windows.Forms.Label();
+            this.alphabetLabel = new System.Windows.Forms.Label();
             this.upperPanel = new System.Windows.Forms.Panel();
             this.upperSplitContainer = new System.Windows.Forms.SplitContainer();
             this.rulesGroupBox = new System.Windows.Forms.GroupBox();
             this.rulesTextBox = new System.Windows.Forms.RichTextBox();
             this.gameGroupBox = new System.Windows.Forms.GroupBox();
             this.gameRichTextBox = new System.Windows.Forms.RichTextBox();
-            this.parametersPanel = new System.Windows.Forms.Panel();
             this.gameParameters.SuspendLayout();
+            this.parametersPanel.SuspendLayout();
             this.alphabetGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upperSplitContainer)).BeginInit();
             this.upperSplitContainer.Panel1.SuspendLayout();
@@ -62,7 +63,6 @@ namespace Pasikonik
             this.upperSplitContainer.SuspendLayout();
             this.rulesGroupBox.SuspendLayout();
             this.gameGroupBox.SuspendLayout();
-            this.parametersPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // gameParameters
@@ -73,10 +73,56 @@ namespace Pasikonik
             this.gameParameters.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.gameParameters.Location = new System.Drawing.Point(0, 0);
             this.gameParameters.Name = "gameParameters";
-            this.gameParameters.Size = new System.Drawing.Size(443, 238);
+            this.gameParameters.Size = new System.Drawing.Size(458, 238);
             this.gameParameters.TabIndex = 0;
             this.gameParameters.TabStop = false;
             this.gameParameters.Text = "Parametry gry";
+            // 
+            // parametersPanel
+            // 
+            this.parametersPanel.Controls.Add(this.startGameButton);
+            this.parametersPanel.Controls.Add(this.alphabetLengthTextBox);
+            this.parametersPanel.Controls.Add(this.maxLengthTextBox);
+            this.parametersPanel.Controls.Add(this.alphabetGroupBox);
+            this.parametersPanel.Controls.Add(this.maxLengthLabel);
+            this.parametersPanel.Controls.Add(this.alphabetLengthLabel);
+            this.parametersPanel.Controls.Add(this.difficultyLevelComboBox);
+            this.parametersPanel.Controls.Add(this.patternRichTextBox);
+            this.parametersPanel.Controls.Add(this.difficultyLevelLabel);
+            this.parametersPanel.Controls.Add(this.patternLabel);
+            this.parametersPanel.Controls.Add(this.alphabetLabel);
+            this.parametersPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.parametersPanel.Location = new System.Drawing.Point(3, 18);
+            this.parametersPanel.Name = "parametersPanel";
+            this.parametersPanel.Size = new System.Drawing.Size(452, 217);
+            this.parametersPanel.TabIndex = 15;
+            // 
+            // startGameButton
+            // 
+            this.startGameButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.startGameButton.Location = new System.Drawing.Point(293, 131);
+            this.startGameButton.Name = "startGameButton";
+            this.startGameButton.Size = new System.Drawing.Size(150, 70);
+            this.startGameButton.TabIndex = 10;
+            this.startGameButton.Text = "Start gry";
+            this.startGameButton.UseVisualStyleBackColor = true;
+            this.startGameButton.Click += new System.EventHandler(this.startGameButton_Click);
+            // 
+            // alphabetLengthTextBox
+            // 
+            this.alphabetLengthTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.alphabetLengthTextBox.Location = new System.Drawing.Point(140, 146);
+            this.alphabetLengthTextBox.Name = "alphabetLengthTextBox";
+            this.alphabetLengthTextBox.Size = new System.Drawing.Size(96, 22);
+            this.alphabetLengthTextBox.TabIndex = 12;
+            // 
+            // maxLengthTextBox
+            // 
+            this.maxLengthTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.maxLengthTextBox.Location = new System.Drawing.Point(140, 179);
+            this.maxLengthTextBox.Name = "maxLengthTextBox";
+            this.maxLengthTextBox.Size = new System.Drawing.Size(96, 22);
+            this.maxLengthTextBox.TabIndex = 9;
             // 
             // alphabetGroupBox
             // 
@@ -113,28 +159,15 @@ namespace Pasikonik
             this.qwertyAlphabet.UseVisualStyleBackColor = true;
             this.qwertyAlphabet.Click += new System.EventHandler(this.alphabet_Click);
             // 
-            // patternRichTextBox
+            // maxLengthLabel
             // 
-            this.patternRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.patternRichTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.patternRichTextBox.ForeColor = System.Drawing.Color.Red;
-            this.patternRichTextBox.Location = new System.Drawing.Point(313, 59);
-            this.patternRichTextBox.MaxLength = 2;
-            this.patternRichTextBox.Multiline = false;
-            this.patternRichTextBox.Name = "patternRichTextBox";
-            this.patternRichTextBox.ReadOnly = true;
-            this.patternRichTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.patternRichTextBox.Size = new System.Drawing.Size(50, 32);
-            this.patternRichTextBox.TabIndex = 13;
-            this.patternRichTextBox.Text = "XX";
-            // 
-            // alphabetLengthTextBox
-            // 
-            this.alphabetLengthTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.alphabetLengthTextBox.Location = new System.Drawing.Point(140, 146);
-            this.alphabetLengthTextBox.Name = "alphabetLengthTextBox";
-            this.alphabetLengthTextBox.Size = new System.Drawing.Size(96, 22);
-            this.alphabetLengthTextBox.TabIndex = 12;
+            this.maxLengthLabel.AutoSize = true;
+            this.maxLengthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.maxLengthLabel.Location = new System.Drawing.Point(21, 185);
+            this.maxLengthLabel.Name = "maxLengthLabel";
+            this.maxLengthLabel.Size = new System.Drawing.Size(91, 16);
+            this.maxLengthLabel.TabIndex = 6;
+            this.maxLengthLabel.Text = "Max dl. slowa:";
             // 
             // alphabetLengthLabel
             // 
@@ -145,25 +178,6 @@ namespace Pasikonik
             this.alphabetLengthLabel.Size = new System.Drawing.Size(78, 16);
             this.alphabetLengthLabel.TabIndex = 11;
             this.alphabetLengthLabel.Text = "Dl. alfabetu:";
-            // 
-            // startGameButton
-            // 
-            this.startGameButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.startGameButton.Location = new System.Drawing.Point(271, 130);
-            this.startGameButton.Name = "startGameButton";
-            this.startGameButton.Size = new System.Drawing.Size(150, 70);
-            this.startGameButton.TabIndex = 10;
-            this.startGameButton.Text = "Start gry";
-            this.startGameButton.UseVisualStyleBackColor = true;
-            this.startGameButton.Click += new System.EventHandler(this.startGameButton_Click);
-            // 
-            // maxLengthTextBox
-            // 
-            this.maxLengthTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.maxLengthTextBox.Location = new System.Drawing.Point(140, 179);
-            this.maxLengthTextBox.Name = "maxLengthTextBox";
-            this.maxLengthTextBox.Size = new System.Drawing.Size(96, 22);
-            this.maxLengthTextBox.TabIndex = 9;
             // 
             // difficultyLevelComboBox
             // 
@@ -179,6 +193,21 @@ namespace Pasikonik
             this.difficultyLevelComboBox.Size = new System.Drawing.Size(212, 24);
             this.difficultyLevelComboBox.TabIndex = 8;
             // 
+            // patternRichTextBox
+            // 
+            this.patternRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.patternRichTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.patternRichTextBox.ForeColor = System.Drawing.Color.Red;
+            this.patternRichTextBox.Location = new System.Drawing.Point(343, 55);
+            this.patternRichTextBox.MaxLength = 2;
+            this.patternRichTextBox.Multiline = false;
+            this.patternRichTextBox.Name = "patternRichTextBox";
+            this.patternRichTextBox.ReadOnly = true;
+            this.patternRichTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.patternRichTextBox.Size = new System.Drawing.Size(50, 32);
+            this.patternRichTextBox.TabIndex = 13;
+            this.patternRichTextBox.Text = "XX";
+            // 
             // difficultyLevelLabel
             // 
             this.difficultyLevelLabel.AutoSize = true;
@@ -189,15 +218,15 @@ namespace Pasikonik
             this.difficultyLevelLabel.TabIndex = 7;
             this.difficultyLevelLabel.Text = "Poziom trudności:";
             // 
-            // maxLengthLabel
+            // patternLabel
             // 
-            this.maxLengthLabel.AutoSize = true;
-            this.maxLengthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.maxLengthLabel.Location = new System.Drawing.Point(21, 185);
-            this.maxLengthLabel.Name = "maxLengthLabel";
-            this.maxLengthLabel.Size = new System.Drawing.Size(91, 16);
-            this.maxLengthLabel.TabIndex = 6;
-            this.maxLengthLabel.Text = "Max dl. slowa:";
+            this.patternLabel.AutoSize = true;
+            this.patternLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.patternLabel.Location = new System.Drawing.Point(290, 16);
+            this.patternLabel.Name = "patternLabel";
+            this.patternLabel.Size = new System.Drawing.Size(149, 16);
+            this.patternLabel.TabIndex = 0;
+            this.patternLabel.Text = "Zabroniony wzorzec:";
             // 
             // alphabetLabel
             // 
@@ -208,16 +237,6 @@ namespace Pasikonik
             this.alphabetLabel.Size = new System.Drawing.Size(53, 16);
             this.alphabetLabel.TabIndex = 2;
             this.alphabetLabel.Text = "Alfabet:";
-            // 
-            // patternLabel
-            // 
-            this.patternLabel.AutoSize = true;
-            this.patternLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.patternLabel.Location = new System.Drawing.Point(268, 16);
-            this.patternLabel.Name = "patternLabel";
-            this.patternLabel.Size = new System.Drawing.Size(149, 16);
-            this.patternLabel.TabIndex = 0;
-            this.patternLabel.Text = "Zabroniony wzorzec:";
             // 
             // upperPanel
             // 
@@ -240,8 +259,8 @@ namespace Pasikonik
             // upperSplitContainer.Panel2
             // 
             this.upperSplitContainer.Panel2.Controls.Add(this.gameParameters);
-            this.upperSplitContainer.Size = new System.Drawing.Size(750, 238);
-            this.upperSplitContainer.SplitterDistance = 306;
+            this.upperSplitContainer.Size = new System.Drawing.Size(784, 238);
+            this.upperSplitContainer.SplitterDistance = 325;
             this.upperSplitContainer.SplitterWidth = 1;
             this.upperSplitContainer.TabIndex = 5;
             // 
@@ -254,7 +273,7 @@ namespace Pasikonik
             this.rulesGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.rulesGroupBox.Location = new System.Drawing.Point(3, 0);
             this.rulesGroupBox.Name = "rulesGroupBox";
-            this.rulesGroupBox.Size = new System.Drawing.Size(306, 238);
+            this.rulesGroupBox.Size = new System.Drawing.Size(325, 238);
             this.rulesGroupBox.TabIndex = 0;
             this.rulesGroupBox.TabStop = false;
             this.rulesGroupBox.Text = "Zasady gry";
@@ -265,11 +284,11 @@ namespace Pasikonik
             this.rulesTextBox.CausesValidation = false;
             this.rulesTextBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.rulesTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rulesTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.rulesTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.rulesTextBox.Location = new System.Drawing.Point(3, 18);
             this.rulesTextBox.Name = "rulesTextBox";
             this.rulesTextBox.ReadOnly = true;
-            this.rulesTextBox.Size = new System.Drawing.Size(300, 217);
+            this.rulesTextBox.Size = new System.Drawing.Size(319, 217);
             this.rulesTextBox.TabIndex = 0;
             this.rulesTextBox.Text = "";
             // 
@@ -283,7 +302,7 @@ namespace Pasikonik
             this.gameGroupBox.Margin = new System.Windows.Forms.Padding(10);
             this.gameGroupBox.Name = "gameGroupBox";
             this.gameGroupBox.Padding = new System.Windows.Forms.Padding(10);
-            this.gameGroupBox.Size = new System.Drawing.Size(750, 312);
+            this.gameGroupBox.Size = new System.Drawing.Size(784, 323);
             this.gameGroupBox.TabIndex = 6;
             this.gameGroupBox.TabStop = false;
             this.gameGroupBox.Text = "Gra";
@@ -299,34 +318,15 @@ namespace Pasikonik
             this.gameRichTextBox.Name = "gameRichTextBox";
             this.gameRichTextBox.ReadOnly = true;
             this.gameRichTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.gameRichTextBox.Size = new System.Drawing.Size(730, 275);
+            this.gameRichTextBox.Size = new System.Drawing.Size(764, 286);
             this.gameRichTextBox.TabIndex = 0;
             this.gameRichTextBox.Text = "";
-            // 
-            // parametersPanel
-            // 
-            this.parametersPanel.Controls.Add(this.startGameButton);
-            this.parametersPanel.Controls.Add(this.alphabetLengthTextBox);
-            this.parametersPanel.Controls.Add(this.maxLengthTextBox);
-            this.parametersPanel.Controls.Add(this.alphabetGroupBox);
-            this.parametersPanel.Controls.Add(this.maxLengthLabel);
-            this.parametersPanel.Controls.Add(this.alphabetLengthLabel);
-            this.parametersPanel.Controls.Add(this.difficultyLevelComboBox);
-            this.parametersPanel.Controls.Add(this.patternRichTextBox);
-            this.parametersPanel.Controls.Add(this.difficultyLevelLabel);
-            this.parametersPanel.Controls.Add(this.patternLabel);
-            this.parametersPanel.Controls.Add(this.alphabetLabel);
-            this.parametersPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.parametersPanel.Location = new System.Drawing.Point(3, 18);
-            this.parametersPanel.Name = "parametersPanel";
-            this.parametersPanel.Size = new System.Drawing.Size(437, 217);
-            this.parametersPanel.TabIndex = 15;
             // 
             // Pasikonik
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(750, 550);
+            this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.gameGroupBox);
             this.Controls.Add(this.upperSplitContainer);
             this.Controls.Add(this.upperPanel);
@@ -334,8 +334,10 @@ namespace Pasikonik
             this.MinimumSize = new System.Drawing.Size(750, 550);
             this.Name = "Pasikonik";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Pasikonik";
+            this.Text = "[ P A S I K O N I K ]";
             this.gameParameters.ResumeLayout(false);
+            this.parametersPanel.ResumeLayout(false);
+            this.parametersPanel.PerformLayout();
             this.alphabetGroupBox.ResumeLayout(false);
             this.alphabetGroupBox.PerformLayout();
             this.upperSplitContainer.Panel1.ResumeLayout(false);
@@ -345,8 +347,6 @@ namespace Pasikonik
             this.upperSplitContainer.ResumeLayout(false);
             this.rulesGroupBox.ResumeLayout(false);
             this.gameGroupBox.ResumeLayout(false);
-            this.parametersPanel.ResumeLayout(false);
-            this.parametersPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }

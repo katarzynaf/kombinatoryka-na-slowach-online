@@ -26,6 +26,7 @@ namespace Pasikonik
 
         private void startGameButton_Click(object sender, EventArgs e)
         {
+           
             gameRichTextBox.ReadOnly = false;
             gameRichTextBox.BackColor = Color.White;
             
