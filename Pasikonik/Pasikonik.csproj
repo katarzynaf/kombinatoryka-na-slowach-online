@@ -80,7 +80,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\grasshopper-sq.ico" />
+    <None Include="res\grasshopper.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\rules.txt" />

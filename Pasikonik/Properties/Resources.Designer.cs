@@ -63,9 +63,9 @@ namespace Pasikonik.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon grasshopper_sq {
+        internal static System.Drawing.Icon grasshopper {
             get {
-                object obj = ResourceManager.GetObject("grasshopper_sq", resourceCulture);
+                object obj = ResourceManager.GetObject("grasshopper", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }

@@ -20,7 +20,7 @@ namespace Pasikonik
             
             InitializeComponent();
             rulesTextBox.Text =  Properties.Resources.rules;
-
+            
             
         }
 
@@ -28,6 +28,7 @@ namespace Pasikonik
         {
             gameRichTextBox.ReadOnly = false;
             gameRichTextBox.BackColor = Color.White;
+            
 
         }
 
