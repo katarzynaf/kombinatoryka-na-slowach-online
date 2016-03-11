@@ -13,34 +13,44 @@ namespace Pasikonik
 {
     public partial class Pasikonik : Form
     {
-        
+
+
         public Pasikonik()
         {
             
             InitializeComponent();
-            const string removeString = "\\bin\\Debug";
-            string path = Path.GetDirectoryName(Application.ExecutablePath);
-            int index = path.IndexOf(removeString, StringComparison.Ordinal);
-            string cleanPath = path.Remove(index, removeString.Length);
-            cleanPath += "\\rules.txt";
+            rulesTextBox.Text =  Properties.Resources.rules;
 
-
-            string[] lines = File.ReadAllLines(cleanPath);
-            if (string.IsNullOrWhiteSpace(this.richTextBox.Text))
-            {
-                foreach (var line in lines)
-                {
-
-                    this.richTextBox.Text += (line + '\n');
-                }
-            }
-            this.richTextBox.ReadOnly = true;
-
+            
         }
 
         private void startGameButton_Click(object sender, EventArgs e)
         {
+            gameRichTextBox.ReadOnly = false;
+            gameRichTextBox.BackColor = Color.White;
 
+        }
+
+
+
+
+
+
+        private void alphabet_Click(Object sender, EventArgs e)
+        {
+            var checkedRB = (RadioButton) sender;
+            foreach (RadioButton rb in alphabetGroupBox.Controls)
+            {
+                if (checkedRB.Equals(rb))
+                {
+                    checkedRB.Checked = true;
+                }
+                else
+                {
+                    rb.Checked = false;
+                }
+
+            }
         }
     }
 }

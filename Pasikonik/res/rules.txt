@@ -8,8 +8,9 @@
 - Liczba liter wstawianych przez komputer  zalezy od tego, 
   gdzie znajduje sie pasikonik.
 
-  Jezeli jest on na przedostatniej wstawionej literze, 
+  Jezeli jest on na przedostatniej wstawionej literze,
   to komputer  wstawia jedna litere.
 
-  Jezeli pasikonik jest na ostatniej literze, 
+  Jezeli pasikonik jest na ostatniej literze,
+  badz jest to pierwszy ruch w grze 
   to komputer  wstawia dwie litery.
