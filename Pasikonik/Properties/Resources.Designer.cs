@@ -61,6 +61,24 @@ namespace Pasikonik.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Poddaje sie.
+        /// </summary>
+        internal static string GAME_END {
+            get {
+                return ResourceManager.GetString("GAME_END", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start gry.
+        /// </summary>
+        internal static string Game_START {
+            get {
+                return ResourceManager.GetString("Game_START", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon grasshopper {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -19,7 +20,15 @@ namespace Pasikonik
             var isOk = false;
 
             if (!IsNumber(pasikonik.alphabetLengthTextBox.Text))
+            {
                 errorMsg += ("Dlugosc alfabetu musi byc liczba" + Environment.NewLine);
+            }
+            else if (pasikonik.alphabetLengthTextBox.Text != null)
+            {
+                var length = int.Parse(pasikonik.alphabetLengthTextBox.Text);
+                if (length < 1 || length > 26) errorMsg += ("Alfabet może być dlugosci od 1 do 26" + Environment.NewLine);
+            }
+
 
             if (!IsNumber(pasikonik.maxLengthTextBox.Text))
                 errorMsg += ("Dlugosc slowa musi byc liczba" + Environment.NewLine);

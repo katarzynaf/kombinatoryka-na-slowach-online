@@ -309,7 +309,7 @@ namespace Pasikonik
             // 
             // gameRichTextBox
             // 
-            this.gameRichTextBox.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.gameRichTextBox.BackColor = System.Drawing.Color.LightGray;
             this.gameRichTextBox.DetectUrls = false;
             this.gameRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gameRichTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
