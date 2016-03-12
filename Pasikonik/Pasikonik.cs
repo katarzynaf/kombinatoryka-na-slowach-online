@@ -26,11 +26,9 @@ namespace Pasikonik
 
         private void startGameButton_Click(object sender, EventArgs e)
         {
-           
+            if (!Validator.CheckGameParameters(this)) return;
             gameRichTextBox.ReadOnly = false;
             gameRichTextBox.BackColor = Color.White;
-            
-
         }
 
 
@@ -44,14 +42,9 @@ namespace Pasikonik
             foreach (RadioButton rb in alphabetGroupBox.Controls)
             {
                 if (checkedRB.Equals(rb))
-                {
                     checkedRB.Checked = true;
-                }
                 else
-                {
                     rb.Checked = false;
-                }
-
             }
         }
     }

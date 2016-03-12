@@ -353,27 +353,29 @@ namespace Pasikonik
 
         #endregion
 
-        private System.Windows.Forms.GroupBox gameParameters;
-        private System.Windows.Forms.Label patternLabel;
-        private System.Windows.Forms.Label alphabetLabel;
-        private System.Windows.Forms.RadioButton abcdAlphabet;
-        private System.Windows.Forms.RadioButton qwertyAlphabet;
-        private System.Windows.Forms.TextBox maxLengthTextBox;
-        private System.Windows.Forms.ComboBox difficultyLevelComboBox;
-        private System.Windows.Forms.Label maxLengthLabel;
-        private System.Windows.Forms.Button startGameButton;
-        private System.Windows.Forms.Panel upperPanel;
-        private System.Windows.Forms.SplitContainer upperSplitContainer;
-        private System.Windows.Forms.GroupBox rulesGroupBox;
-        private System.Windows.Forms.GroupBox gameGroupBox;
+        private GroupBox gameParameters;
+        private Label patternLabel;
+        private Label alphabetLabel;
+        private Label maxLengthLabel;
+        private Button startGameButton;
+        private Panel upperPanel;
+        private SplitContainer upperSplitContainer;
+        private GroupBox rulesGroupBox;
+        private GroupBox gameGroupBox;
         private RichTextBox rulesTextBox;
-        private Label alphabetLengthLabel;
-        private TextBox alphabetLengthTextBox;
+        private Label alphabetLengthLabel;    
         private Label difficultyLevelLabel;
         private RichTextBox patternRichTextBox;
         private RichTextBox gameRichTextBox;
         private GroupBox alphabetGroupBox;
         private Panel parametersPanel;
+
+        public TextBox alphabetLengthTextBox;
+        public TextBox maxLengthTextBox;
+        public RadioButton abcdAlphabet;
+        public RadioButton qwertyAlphabet;
+        public ComboBox difficultyLevelComboBox;
+
     }
 }
 

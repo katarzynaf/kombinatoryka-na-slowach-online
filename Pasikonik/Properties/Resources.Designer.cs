@@ -71,21 +71,27 @@ namespace Pasikonik.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to - Komputer wstawia wybrana litere lub dwie 
-        ///  na koniec slowa(w zaleznosci od pozycji pasikonika) ,
-        ///- Ty jako pasikonik mozesz skoczyc na sasiednia litere albo przeskoczyc jedna 
-        ///  litere (pasikonik nie moze sie cofac),
-        ///- Litery, na ktorych wyladuje pasikonik tworza slowo S,
-        ///- Komputer  wygrywa, gdy w slowie S wystapi wzorzec,
-        ///- Ty wygrywasz, gdy slowo S osiagnie zadana dlugosc, a wzorzec sie nie pojawi,
-        ///- Liczba liter wstawianych przez komputer  zalezy od tego, 
+        ///   Looks up a localized string similar to * Komputer wstawia wybrana litere lub dwie na koniec slowa ( w zaleznosci od pozycji pasikonika ) ,
+        ///* Ty jako pasikonik mozesz skoczyc na sasiednia litere albo przeskoczyc jedna litere ( pasikonik nie moze sie cofac ),
+        ///* Litery, na ktorych wyladuje pasikonik tworza slowo S,
+        ///* Komputer  wygrywa, gdy w slowie S wystapi wzorzec,
+        ///* Ty wygrywasz, gdy slowo S osiagnie zadana dlugosc, a wzorzec sie nie pojawi,
+        ///* Liczba liter wstawianych przez komputer  zalezy od tego, 
         ///  gdzie znajduje sie pasikonik.
-        ///
-        ///  [rest of string was truncated]&quot;;.
+        ///  Jeze [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string rules {
             get {
                 return ResourceManager.GetString("rules", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ERROR.
+        /// </summary>
+        internal static string Validator__ERROR {
+            get {
+                return ResourceManager.GetString("Validator__ERROR", resourceCulture);
             }
         }
     }

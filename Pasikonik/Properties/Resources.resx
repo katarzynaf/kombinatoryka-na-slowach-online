@@ -124,4 +124,7 @@
   <data name="rules" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\res\rules.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1250</value>
   </data>
+  <data name="Validator__ERROR" xml:space="preserve">
+    <value>ERROR</value>
+  </data>
 </root>
