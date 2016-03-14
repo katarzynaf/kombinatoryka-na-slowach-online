@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 
 namespace Pasikonik
 {
@@ -16,32 +15,27 @@ namespace Pasikonik
     {
         bool GameEnded ;
         private string PasikonikRead = null;
-        private string GameWord = null;
+        private int PossibleNoOfLetters = 0;
+        private Cursor PasikonikPosition;
+      
+        private readonly Color PasikonikColor = Color.Green;
+        private readonly Color PatternColor = Color.DarkRed;
+ 
         private char[] Alfabet;
 
         private AlfabetType alfabetType;
         private int alfabetLength;
         private GameLevel gameLevel;
+        private Turn turn;
+      
 
-        private enum AlfabetType
-        {
-            ABCD,
-            QWERTY,
-        }
 
-        private enum GameLevel
-        {
-            EASY,
-            NORMAL
-        }
 
         public Pasikonik()
         {
-
             InitializeComponent();
             rulesTextBox.Text =  Properties.Resources.rules;
-            
-            
+           
         }
 
         private void startGameButton_Click(object sender, EventArgs e)
@@ -61,10 +55,15 @@ namespace Pasikonik
                 alphabetLengthTextBox.Enabled = false;
                 maxLengthTextBox.Enabled = false;
                 difficultyLevelComboBox.Enabled = false;
-
                 startGameButton.Text = Properties.Resources.GAME_END;
+                gameLevel = (GameLevel)Enum.Parse(typeof(GameLevel), difficultyLevelComboBox.SelectedItem.ToString());
+               
+                turn = Turn.COMPUTER;
+                PossibleNoOfLetters = 2;
 
-                ComputerMovement(difficultyLevelComboBox.SelectedItem.ToString());
+
+                PlayGame();
+   
             }
             else if (startGameButton.Text == Properties.Resources.GAME_END)
             {
@@ -79,10 +78,34 @@ namespace Pasikonik
                 maxLengthTextBox.Enabled = true;
                 difficultyLevelComboBox.Enabled = true;
                 gameRichTextBox.Text = "";
+                gameLevel = GameLevel.NONE; 
 
                 startGameButton.Text = Properties.Resources.Game_START;
             }
 
+        }
+
+        private void PlayGame()
+        {
+
+                switch (turn)
+                {
+                    case Turn.COMPUTER:
+                        turnInfo.Visible = false;
+                        ComputerMovement();
+                        turnInfo.Visible = true;
+                        break;
+                    case Turn.PLAYER:
+                        if (!Validator.FindPattern(PasikonikRead))
+                            turn = Turn.COMPUTER;
+                        else
+                        {
+                            GameEnded = true;
+                            MessageBox.Show(Properties.Resources.PLAYER_WIN,Properties.Resources.COMPUTER_WIN,MessageBoxButtons.OK,MessageBoxIcon.Information);
+                        }
+                        break;
+                }
+            
         }
 
         private void ConstructAlfabet()
@@ -96,27 +119,33 @@ namespace Pasikonik
 
         }
 
-        private void ComputerMovement(string difficultyLevel)
+        private void ComputerMovement()
         {
+            var GameWord = gameRichTextBox.Text; //biezace slowo
+            PasikonikPosition = gameRichTextBox.Cursor;
+
             if (!GameEnded)
             {
-                //ile liter
-                StringBuilder builder = new StringBuilder();
+                //gdzie
+              //  PasikonikPosition = GetPasikonikPos();
                 //jakie litery
-                if (difficultyLevel.Equals("Normal"))
+                switch (gameLevel)
                 {
-                    
-                }
-                else
-                {
-                    //randomowo
-                    
-                
+                    case GameLevel.NORMAL:
+                        break;
+                    case GameLevel.EASY:
+                        GameWord = RandomLetters(PossibleNoOfLetters);
+                        break;
                 }
 
+
             }
-            
+
+            gameRichTextBox.Text = GameWord ;
+          
+            turn = Turn.PLAYER;
         }
+
 
 
         private string RandomLetters(int size)
@@ -126,7 +155,7 @@ namespace Pasikonik
 
             for (int i = 0; i < size; i++)
             {
-                builder.Append(random.Next(alfabetLength));           
+                builder.Append(Alfabet[random.Next(alfabetLength)]);           
             }
 
             return builder.ToString();
@@ -152,6 +181,25 @@ namespace Pasikonik
             if (checkedRB.Name.Equals(qwertyAlphabet.Text)) alfabetType = AlfabetType.QWERTY;
         }
     }
+
+        enum AlfabetType
+        {
+            ABCD,
+            QWERTY,
+        }
+
+        enum GameLevel
+        {
+            EASY,
+            NORMAL,
+            NONE
+        }
+
+         enum Turn
+        {
+             COMPUTER,
+             PLAYER,
+        }
 
 
 

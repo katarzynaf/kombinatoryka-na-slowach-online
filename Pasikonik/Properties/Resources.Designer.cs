@@ -61,6 +61,24 @@ namespace Pasikonik.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Wygral komputer.
+        /// </summary>
+        internal static string COMPUTER_WIN {
+            get {
+                return ResourceManager.GetString("COMPUTER_WIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Znaleziono wzorzec.
+        /// </summary>
+        internal static string FOUND_PATTERN {
+            get {
+                return ResourceManager.GetString("FOUND_PATTERN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Poddaje sie.
         /// </summary>
         internal static string GAME_END {
@@ -89,14 +107,22 @@ namespace Pasikonik.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Woohooo! Wygrales .
+        /// </summary>
+        internal static string PLAYER_WIN {
+            get {
+                return ResourceManager.GetString("PLAYER_WIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to * Komputer wstawia wybrana litere lub dwie na koniec slowa ( w zaleznosci od pozycji pasikonika ) ,
         ///* Ty jako pasikonik mozesz skoczyc na sasiednia litere albo przeskoczyc jedna litere ( pasikonik nie moze sie cofac ),
         ///* Litery, na ktorych wyladuje pasikonik tworza slowo S,
         ///* Komputer  wygrywa, gdy w slowie S wystapi wzorzec,
         ///* Ty wygrywasz, gdy slowo S osiagnie zadana dlugosc, a wzorzec sie nie pojawi,
-        ///* Liczba liter wstawianych przez komputer  zalezy od tego, 
-        ///  gdzie znajduje sie pasikonik.
-        ///  Jeze [rest of string was truncated]&quot;;.
+        ///* Liczba liter wstawianych przez komputer  zalezy od tego, gdzie znajduje sie pasikonik.
+        ///  Jezeli j [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string rules {
             get {
@@ -110,6 +136,15 @@ namespace Pasikonik.Properties {
         internal static string Validator__ERROR {
             get {
                 return ResourceManager.GetString("Validator__ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zwyciezca.
+        /// </summary>
+        internal static string WINNER {
+            get {
+                return ResourceManager.GetString("WINNER", resourceCulture);
             }
         }
     }

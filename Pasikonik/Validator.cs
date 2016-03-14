@@ -47,6 +47,13 @@ namespace Pasikonik
             return isOk;
         }
 
+        public static bool FindPattern(string passikonikText)
+        {
+            bool found = false;
+
+            return found;
+        }
+
         private static bool IsNumber(String str)
         {
             return Regex.IsMatch(str, "^[0-9]+$");

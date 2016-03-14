@@ -53,7 +53,9 @@ namespace Pasikonik
             this.rulesGroupBox = new System.Windows.Forms.GroupBox();
             this.rulesTextBox = new System.Windows.Forms.RichTextBox();
             this.gameGroupBox = new System.Windows.Forms.GroupBox();
+            this.gameSplitContainer = new System.Windows.Forms.SplitContainer();
             this.gameRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.turnInfo = new System.Windows.Forms.TextBox();
             this.gameParameters.SuspendLayout();
             this.parametersPanel.SuspendLayout();
             this.alphabetGroupBox.SuspendLayout();
@@ -63,6 +65,10 @@ namespace Pasikonik
             this.upperSplitContainer.SuspendLayout();
             this.rulesGroupBox.SuspendLayout();
             this.gameGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gameSplitContainer)).BeginInit();
+            this.gameSplitContainer.Panel1.SuspendLayout();
+            this.gameSplitContainer.Panel2.SuspendLayout();
+            this.gameSplitContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // gameParameters
@@ -73,7 +79,7 @@ namespace Pasikonik
             this.gameParameters.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.gameParameters.Location = new System.Drawing.Point(0, 0);
             this.gameParameters.Name = "gameParameters";
-            this.gameParameters.Size = new System.Drawing.Size(458, 238);
+            this.gameParameters.Size = new System.Drawing.Size(462, 238);
             this.gameParameters.TabIndex = 0;
             this.gameParameters.TabStop = false;
             this.gameParameters.Text = "Parametry gry";
@@ -94,7 +100,7 @@ namespace Pasikonik
             this.parametersPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.parametersPanel.Location = new System.Drawing.Point(3, 18);
             this.parametersPanel.Name = "parametersPanel";
-            this.parametersPanel.Size = new System.Drawing.Size(452, 217);
+            this.parametersPanel.Size = new System.Drawing.Size(456, 217);
             this.parametersPanel.TabIndex = 15;
             // 
             // startGameButton
@@ -186,8 +192,8 @@ namespace Pasikonik
             this.difficultyLevelComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.difficultyLevelComboBox.FormattingEnabled = true;
             this.difficultyLevelComboBox.Items.AddRange(new object[] {
-            "Easy",
-            "Normal"});
+            "EASY",
+            "NORMAL"});
             this.difficultyLevelComboBox.Location = new System.Drawing.Point(24, 44);
             this.difficultyLevelComboBox.Name = "difficultyLevelComboBox";
             this.difficultyLevelComboBox.Size = new System.Drawing.Size(212, 24);
@@ -259,8 +265,8 @@ namespace Pasikonik
             // upperSplitContainer.Panel2
             // 
             this.upperSplitContainer.Panel2.Controls.Add(this.gameParameters);
-            this.upperSplitContainer.Size = new System.Drawing.Size(784, 238);
-            this.upperSplitContainer.SplitterDistance = 325;
+            this.upperSplitContainer.Size = new System.Drawing.Size(790, 238);
+            this.upperSplitContainer.SplitterDistance = 327;
             this.upperSplitContainer.SplitterWidth = 1;
             this.upperSplitContainer.TabIndex = 5;
             // 
@@ -273,7 +279,7 @@ namespace Pasikonik
             this.rulesGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.rulesGroupBox.Location = new System.Drawing.Point(3, 0);
             this.rulesGroupBox.Name = "rulesGroupBox";
-            this.rulesGroupBox.Size = new System.Drawing.Size(325, 238);
+            this.rulesGroupBox.Size = new System.Drawing.Size(327, 238);
             this.rulesGroupBox.TabIndex = 0;
             this.rulesGroupBox.TabStop = false;
             this.rulesGroupBox.Text = "Zasady gry";
@@ -288,13 +294,13 @@ namespace Pasikonik
             this.rulesTextBox.Location = new System.Drawing.Point(3, 18);
             this.rulesTextBox.Name = "rulesTextBox";
             this.rulesTextBox.ReadOnly = true;
-            this.rulesTextBox.Size = new System.Drawing.Size(319, 217);
+            this.rulesTextBox.Size = new System.Drawing.Size(321, 217);
             this.rulesTextBox.TabIndex = 0;
             this.rulesTextBox.Text = "";
             // 
             // gameGroupBox
             // 
-            this.gameGroupBox.Controls.Add(this.gameRichTextBox);
+            this.gameGroupBox.Controls.Add(this.gameSplitContainer);
             this.gameGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gameGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.gameGroupBox.ForeColor = System.Drawing.Color.Black;
@@ -302,10 +308,28 @@ namespace Pasikonik
             this.gameGroupBox.Margin = new System.Windows.Forms.Padding(10);
             this.gameGroupBox.Name = "gameGroupBox";
             this.gameGroupBox.Padding = new System.Windows.Forms.Padding(10);
-            this.gameGroupBox.Size = new System.Drawing.Size(784, 323);
+            this.gameGroupBox.Size = new System.Drawing.Size(790, 364);
             this.gameGroupBox.TabIndex = 6;
             this.gameGroupBox.TabStop = false;
             this.gameGroupBox.Text = "Gra";
+            // 
+            // gameSplitContainer
+            // 
+            this.gameSplitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.gameSplitContainer.Location = new System.Drawing.Point(10, 27);
+            this.gameSplitContainer.Name = "gameSplitContainer";
+            this.gameSplitContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // gameSplitContainer.Panel1
+            // 
+            this.gameSplitContainer.Panel1.Controls.Add(this.gameRichTextBox);
+            // 
+            // gameSplitContainer.Panel2
+            // 
+            this.gameSplitContainer.Panel2.Controls.Add(this.turnInfo);
+            this.gameSplitContainer.Size = new System.Drawing.Size(770, 327);
+            this.gameSplitContainer.SplitterDistance = 295;
+            this.gameSplitContainer.TabIndex = 2;
             // 
             // gameRichTextBox
             // 
@@ -314,19 +338,34 @@ namespace Pasikonik
             this.gameRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gameRichTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.gameRichTextBox.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.gameRichTextBox.Location = new System.Drawing.Point(10, 27);
+            this.gameRichTextBox.Location = new System.Drawing.Point(0, 0);
             this.gameRichTextBox.Name = "gameRichTextBox";
             this.gameRichTextBox.ReadOnly = true;
             this.gameRichTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.gameRichTextBox.Size = new System.Drawing.Size(764, 286);
+            this.gameRichTextBox.Size = new System.Drawing.Size(770, 295);
             this.gameRichTextBox.TabIndex = 0;
             this.gameRichTextBox.Text = "";
+            // 
+            // turnInfo
+            // 
+            this.turnInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.turnInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.turnInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.turnInfo.Location = new System.Drawing.Point(0, 0);
+            this.turnInfo.Name = "turnInfo";
+            this.turnInfo.ReadOnly = true;
+            this.turnInfo.Size = new System.Drawing.Size(770, 17);
+            this.turnInfo.TabIndex = 0;
+            this.turnInfo.Text = "------ Twoja kolej\r\n ------ ";
+            this.turnInfo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.turnInfo.Visible = false;
+            this.turnInfo.WordWrap = false;
             // 
             // Pasikonik
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(790, 602);
             this.Controls.Add(this.gameGroupBox);
             this.Controls.Add(this.upperSplitContainer);
             this.Controls.Add(this.upperPanel);
@@ -347,6 +386,11 @@ namespace Pasikonik
             this.upperSplitContainer.ResumeLayout(false);
             this.rulesGroupBox.ResumeLayout(false);
             this.gameGroupBox.ResumeLayout(false);
+            this.gameSplitContainer.Panel1.ResumeLayout(false);
+            this.gameSplitContainer.Panel2.ResumeLayout(false);
+            this.gameSplitContainer.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gameSplitContainer)).EndInit();
+            this.gameSplitContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -375,6 +419,8 @@ namespace Pasikonik
         public RadioButton abcdAlphabet;
         public RadioButton qwertyAlphabet;
         public ComboBox difficultyLevelComboBox;
+        private SplitContainer gameSplitContainer;
+        private TextBox turnInfo;
 
     }
 }

@@ -133,4 +133,16 @@
   <data name="Validator__ERROR" xml:space="preserve">
     <value>ERROR</value>
   </data>
+  <data name="COMPUTER_WIN" xml:space="preserve">
+    <value>Wygral komputer</value>
+  </data>
+  <data name="FOUND_PATTERN" xml:space="preserve">
+    <value>Znaleziono wzorzec</value>
+  </data>
+  <data name="PLAYER_WIN" xml:space="preserve">
+    <value>Woohooo! Wygrales </value>
+  </data>
+  <data name="WINNER" xml:space="preserve">
+    <value>Zwyciezca</value>
+  </data>
 </root>

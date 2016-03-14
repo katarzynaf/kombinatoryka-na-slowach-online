@@ -3,7 +3,6 @@
 * Litery, na ktorych wyladuje pasikonik tworza slowo S,
 * Komputer  wygrywa, gdy w slowie S wystapi wzorzec,
 * Ty wygrywasz, gdy slowo S osiagnie zadana dlugosc, a wzorzec sie nie pojawi,
-* Liczba liter wstawianych przez komputer  zalezy od tego, 
-  gdzie znajduje sie pasikonik.
+* Liczba liter wstawianych przez komputer  zalezy od tego, gdzie znajduje sie pasikonik.
   Jezeli jest on na przedostatniej wstawionej literze,to komputer  wstawia jedna litere.
   Jezeli pasikonik jest na ostatniej literze, badz jest to pierwszy ruch w grze to komputer  wstawia dwie litery.
