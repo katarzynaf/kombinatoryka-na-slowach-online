@@ -345,6 +345,8 @@ namespace Pasikonik
             this.gameRichTextBox.Size = new System.Drawing.Size(770, 295);
             this.gameRichTextBox.TabIndex = 0;
             this.gameRichTextBox.Text = "";
+            this.gameRichTextBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gameRichTextBox_MouseDown);
+            this.gameRichTextBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gameRichTextBox_MouseUp);
             // 
             // turnInfo
             // 

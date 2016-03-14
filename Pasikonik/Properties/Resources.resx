@@ -145,4 +145,7 @@
   <data name="WINNER" xml:space="preserve">
     <value>Zwyciezca</value>
   </data>
+  <data name="ValidateMove_Niewlasciwy_ruch_pasikonika" xml:space="preserve">
+    <value>Niewlasciwy ruch pasikonika</value>
+  </data>
 </root>

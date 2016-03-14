@@ -13,40 +13,41 @@ namespace Pasikonik
 {
     public partial class Pasikonik : Form
     {
-        bool GameEnded ;
-        private string PasikonikRead = null;
+        bool GameEnded;
         private int PossibleNoOfLetters = 0;
-        private Cursor PasikonikPosition;
-      
+        private int currentPasikonikPosition;
+        private int prevPasikonikPosition;
+        private string PasikonikRead { get; set; }
+
         private readonly Color PasikonikColor = Color.Green;
         private readonly Color PatternColor = Color.DarkRed;
- 
+
         private char[] Alfabet;
 
         private AlfabetType alfabetType;
         private int alfabetLength;
         private GameLevel gameLevel;
         private Turn turn;
-      
+
 
 
 
         public Pasikonik()
         {
             InitializeComponent();
-            rulesTextBox.Text =  Properties.Resources.rules;
-           
+            rulesTextBox.Text = Properties.Resources.rules;
+
         }
 
         private void startGameButton_Click(object sender, EventArgs e)
         {
-           
+
             if (startGameButton.Text == Properties.Resources.Game_START)
             {
                 if (!Validator.CheckGameParameters(this)) return;
                 GameEnded = false;
 
-                gameRichTextBox.ReadOnly = false;
+
                 gameRichTextBox.BackColor = Color.White;
 
                 ConstructAlfabet();
@@ -57,13 +58,13 @@ namespace Pasikonik
                 difficultyLevelComboBox.Enabled = false;
                 startGameButton.Text = Properties.Resources.GAME_END;
                 gameLevel = (GameLevel)Enum.Parse(typeof(GameLevel), difficultyLevelComboBox.SelectedItem.ToString());
-               
+
                 turn = Turn.COMPUTER;
                 PossibleNoOfLetters = 2;
-
+                prevPasikonikPosition = 0;
 
                 PlayGame();
-   
+
             }
             else if (startGameButton.Text == Properties.Resources.GAME_END)
             {
@@ -78,7 +79,7 @@ namespace Pasikonik
                 maxLengthTextBox.Enabled = true;
                 difficultyLevelComboBox.Enabled = true;
                 gameRichTextBox.Text = "";
-                gameLevel = GameLevel.NONE; 
+                gameLevel = GameLevel.NONE;
 
                 startGameButton.Text = Properties.Resources.Game_START;
             }
@@ -88,25 +89,19 @@ namespace Pasikonik
         private void PlayGame()
         {
 
-                switch (turn)
-                {
-                    case Turn.COMPUTER:
-                        turnInfo.Visible = false;
-                        ComputerMovement();
-                        turnInfo.Visible = true;
-                        break;
-                    case Turn.PLAYER:
-                        if (!Validator.FindPattern(PasikonikRead))
-                            turn = Turn.COMPUTER;
-                        else
-                        {
-                            GameEnded = true;
-                            MessageBox.Show(Properties.Resources.PLAYER_WIN,Properties.Resources.COMPUTER_WIN,MessageBoxButtons.OK,MessageBoxIcon.Information);
-                        }
-                        break;
-                }
-            
+            switch (turn)
+            {
+                case Turn.COMPUTER:
+                    ComputerMovement();
+                    break;
+                case Turn.PLAYER:
+
+                    break;
+            }
+
         }
+
+
 
         private void ConstructAlfabet()
         {
@@ -121,29 +116,34 @@ namespace Pasikonik
 
         private void ComputerMovement()
         {
-            var GameWord = gameRichTextBox.Text; //biezace slowo
-            PasikonikPosition = gameRichTextBox.Cursor;
+            turnInfo.Visible = false;
+            var insertWord = ""; //biezace slowo
 
             if (!GameEnded)
             {
-                //gdzie
-              //  PasikonikPosition = GetPasikonikPos();
                 //jakie litery
                 switch (gameLevel)
                 {
                     case GameLevel.NORMAL:
                         break;
                     case GameLevel.EASY:
-                        GameWord = RandomLetters(PossibleNoOfLetters);
+                        insertWord = RandomLetters(PossibleNoOfLetters);
                         break;
                 }
 
+                AddWord(insertWord, currentPasikonikPosition);
 
             }
 
-            gameRichTextBox.Text = GameWord ;
-          
+
             turn = Turn.PLAYER;
+            PossibleNoOfLetters = 0;
+            turnInfo.Visible = true;
+        }
+
+        private void AddWord(string insertWord, int currentPasikonikPosition)
+        {
+            //throw new NotImplementedException();
         }
 
 
@@ -155,7 +155,7 @@ namespace Pasikonik
 
             for (int i = 0; i < size; i++)
             {
-                builder.Append(Alfabet[random.Next(alfabetLength)]);           
+                builder.Append(Alfabet[random.Next(alfabetLength)]);
             }
 
             return builder.ToString();
@@ -165,13 +165,13 @@ namespace Pasikonik
 
         private void alphabet_Click(Object sender, EventArgs e)
         {
-            var checkedRB = (RadioButton) sender;
+            var checkedRB = (RadioButton)sender;
             foreach (RadioButton rb in alphabetGroupBox.Controls)
             {
                 if (checkedRB.Equals(rb))
                 {
                     checkedRB.Checked = true;
-                    
+
                 }
                 else
                     rb.Checked = false;
@@ -180,26 +180,83 @@ namespace Pasikonik
             if (checkedRB.Name.Equals(abcdAlphabet.Text)) alfabetType = AlfabetType.ABCD;
             if (checkedRB.Name.Equals(qwertyAlphabet.Text)) alfabetType = AlfabetType.QWERTY;
         }
+
+        private void gameRichTextBox_MouseDown(object sender, EventArgs e)
+        {
+            prevPasikonikPosition = currentPasikonikPosition;
+
+            if (gameRichTextBox.Text.Length == 2) gameRichTextBox.SelectionStart = 0;
+            //start Selecting
+        }
+
+        private string GetPasikonikReadTxt()
+        {
+            //throw new NotImplementedException();
+            return "yolo";
+        }
+
+        private void gameRichTextBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            //end selecting
+            currentPasikonikPosition = gameRichTextBox.SelectionStart + gameRichTextBox.SelectionLength;
+
+
+            if (!Validator.ValidateMove(prevPasikonikPosition, currentPasikonikPosition)) return;
+
+            gameRichTextBox.SelectionColor = PasikonikColor;
+                
+
+            if (currentPasikonikPosition - prevPasikonikPosition == 2) PossibleNoOfLetters = 1;
+            if (currentPasikonikPosition - prevPasikonikPosition == 1) PossibleNoOfLetters = 2;
+
+            PasikonikRead = GetPasikonikReadTxt();
+            if (!Validator.FindPattern(PasikonikRead)) //nie znaleziono wzorca
+            {
+                if (PasikonikRead.Length >= int.Parse(maxLengthTextBox.Text))
+                {
+                    GameEnded = true;
+                    MessageBox.Show(Properties.Resources.PLAYER_WIN, Properties.Resources.COMPUTER_WIN,
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    turn = Turn.COMPUTER;
+                    PlayGame();
+                }
+
+            }
+
+            else
+            {
+                GameEnded = true;
+
+                MessageBox.Show(Properties.Resources.COMPUTER_WIN, Properties.Resources.COMPUTER_WIN,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+
+
     }
 
-        enum AlfabetType
-        {
-            ABCD,
-            QWERTY,
-        }
+    enum AlfabetType
+    {
+        ABCD,
+        QWERTY,
+    }
 
-        enum GameLevel
-        {
-            EASY,
-            NORMAL,
-            NONE
-        }
+    enum GameLevel
+    {
+        EASY,
+        NORMAL,
+        NONE
+    }
 
-         enum Turn
-        {
-             COMPUTER,
-             PLAYER,
-        }
+    enum Turn
+    {
+        COMPUTER,
+        PLAYER,
+    }
 
 
 

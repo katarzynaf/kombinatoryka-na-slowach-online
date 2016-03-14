@@ -131,6 +131,15 @@ namespace Pasikonik.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Niewlasciwy ruch pasikonika.
+        /// </summary>
+        internal static string ValidateMove_Niewlasciwy_ruch_pasikonika {
+            get {
+                return ResourceManager.GetString("ValidateMove_Niewlasciwy_ruch_pasikonika", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ERROR.
         /// </summary>
         internal static string Validator__ERROR {

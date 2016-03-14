@@ -53,6 +53,21 @@ namespace Pasikonik
 
             return found;
         }
+        public static bool ValidateMove(int prevPasikonikPosition, int currentPasikonikPosition)
+        {
+            bool isOk = false;
+
+            var pasikonikMove = currentPasikonikPosition - prevPasikonikPosition;
+            if (pasikonikMove == 2 || pasikonikMove == 1) isOk = true;
+            else
+            {
+                
+                MessageBox.Show(Resources.ValidateMove_Niewlasciwy_ruch_pasikonika, Resources.Validator__ERROR, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+            return isOk;
+        }
 
         private static bool IsNumber(String str)
         {
