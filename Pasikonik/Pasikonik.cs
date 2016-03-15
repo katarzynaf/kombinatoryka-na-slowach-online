@@ -18,9 +18,7 @@ namespace Pasikonik
         private int currentPasikonikPosition;
         private int prevPasikonikPosition;
         private string PasikonikRead { get; set; }
-       
 
-        private readonly Color PasikonikColor = Color.Green;
         private readonly Color PatternColor = Color.DarkRed;
 
         private char[] Alfabet;
@@ -70,21 +68,30 @@ namespace Pasikonik
             else if (startGameButton.Text == Properties.Resources.GAME_END)
             {
                 GameEnded = true;
+                GameEnd();
 
-                gameRichTextBox.ReadOnly = true;
-                gameRichTextBox.BackColor = Color.LightGray;
-
-                abcdAlphabet.Enabled = true;
-                qwertyAlphabet.Enabled = true;
-                alphabetLengthTextBox.Enabled = true;
-                maxLengthTextBox.Enabled = true;
-                difficultyLevelComboBox.Enabled = true;
-                gameRichTextBox.Text = "";
-                gameLevel = GameLevel.NONE;
-
-                startGameButton.Text = Properties.Resources.Game_START;
+               
             }
 
+        }
+
+        private void GameEnd()
+        {
+            gameRichTextBox.ReadOnly = true;
+            gameRichTextBox.BackColor = Color.LightGray;
+
+            abcdAlphabet.Enabled = true;
+            qwertyAlphabet.Enabled = true;
+            alphabetLengthTextBox.Enabled = true;
+            maxLengthTextBox.Enabled = true;
+            difficultyLevelComboBox.Enabled = true;
+            gameRichTextBox.Text = "";
+            gameLevel = GameLevel.NONE;
+            currentPasikonikPosition = 0;
+            prevPasikonikPosition = 0;
+            PasikonikRead = "";
+            logDownInfo.Text = "";
+            startGameButton.Text = Properties.Resources.Game_START;
         }
 
         private void PlayGame()
@@ -117,7 +124,7 @@ namespace Pasikonik
 
         private void ComputerMovement()
         {
-            logDownInfo.Visible = false;
+           // logDownInfo.Visible = false;
             var insertWord = ""; //biezace slowo
 
             if (!GameEnded)
@@ -193,6 +200,7 @@ namespace Pasikonik
 
         private void gameRichTextBox_MouseUp(object sender, MouseEventArgs e)
         {
+            DialogResult? result = null;
             //end selecting
             currentPasikonikPosition = gameRichTextBox.SelectionStart + gameRichTextBox.SelectionLength;
 
@@ -205,21 +213,29 @@ namespace Pasikonik
             if (currentPasikonikPosition - prevPasikonikPosition == 2) PossibleNoOfLetters = 1;
             if (currentPasikonikPosition - prevPasikonikPosition == 1) PossibleNoOfLetters = 2;
 
-           // gameRichTextBox.SelectionColor = PasikonikColor;
+ 
+         //   var prev_read = PasikonikRead;
+      //       if( prev_read!=null)
+        //         gameRichTextBox.SelectedText = gameRichTextBox.SelectedText.Remove(prev_read.Length);
             PasikonikRead += gameRichTextBox.SelectedText;
+
 
 
 
             //szukanie wzrorca
             var max = int.Parse(maxLengthTextBox.Text);
             var pattern = Validator.FindPattern(PasikonikRead, max);
+
+            logDownInfo.Text = "Tekst pasikonika  " + PasikonikRead;
+
             if (string.IsNullOrEmpty(pattern)) //nie znaleziono wzorca
             {
                 if (PasikonikRead.Length >= max)
                 {
                     GameEnded = true;
-                    MessageBox.Show(Properties.Resources.PLAYER_WIN, Properties.Resources.PLAYER_WIN,
+                    result = MessageBox.Show(Properties.Resources.PLAYER_WIN, Properties.Resources.PLAYER_WIN,
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
+                   
                 }
                 else
                 {
@@ -227,29 +243,30 @@ namespace Pasikonik
                     PlayGame();
                 }
 
+
+
+                gameRichTextBox.SelectionStart = currentPasikonikPosition;
+                gameRichTextBox.SelectionLength = 0;
+                // gameRichTextBox.SelectionColor = gameRichTextBox.ForeColor;
+
             }
 
             else
             {
                 GameEnded = true;
 
-                MessageBox.Show(Properties.Resources.FOUND_PATTERN, Properties.Resources.COMPUTER_WIN,
+                result = MessageBox.Show(Properties.Resources.FOUND_PATTERN +" "+ pattern, Properties.Resources.COMPUTER_WIN,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                gameRichTextBox.SelectionBullet = true;
                 gameRichTextBox.Find(pattern);
                 gameRichTextBox.SelectionColor = PatternColor;
-
-
-                logDownInfo.Text = pattern;
+                gameRichTextBox.SelectionBullet = false;
             }
 
-            gameRichTextBox.Find(PasikonikRead);
-            gameRichTextBox.SelectionColor = PasikonikColor;
-            
-            gameRichTextBox.SelectionStart = currentPasikonikPosition;
-            gameRichTextBox.SelectionLength = 0;
-           // gameRichTextBox.SelectionColor = gameRichTextBox.ForeColor;
-    
+           
+
+            if (GameEnded && result == DialogResult.OK) GameEnd();
+          
         }
 
 

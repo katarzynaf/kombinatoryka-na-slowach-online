@@ -52,22 +52,28 @@ namespace Pasikonik
             
             string pattern = null;
             //słowa długosci od 1 do max/2
-            for (var i = 1; i > max/2; i++)
+            for (var i = 1; i <= max/2; i++)
             {
-                var substring = passikonikText.Substring(0, i);
-                var rest = passikonikText.Substring(i, passikonikText.Length);
-                var compareTo = rest.Substring(0, i);
+                if (passikonikText.Length >= i)
+                {
+                    string substring = passikonikText.Substring(0, i);
+                
+                string rest = passikonikText.Substring(i);
+
+                string compareTo = "";
+                if (rest.Length >= i) compareTo = rest.Substring(0, i);
 
                 if (substring == compareTo)
                 {
 
-                    pattern = substring;
+                    pattern = substring + compareTo;
+                    return pattern;
                 }
-
             }
+        }
 
 
-            return pattern;
+            return null;
         }
         public static bool ValidateMove(int prevPasikonikPosition, int currentPasikonikPosition)
         {

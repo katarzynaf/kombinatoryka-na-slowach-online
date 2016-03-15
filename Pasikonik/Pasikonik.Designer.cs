@@ -358,7 +358,7 @@ namespace Pasikonik
             this.logDownInfo.ReadOnly = true;
             this.logDownInfo.Size = new System.Drawing.Size(770, 17);
             this.logDownInfo.TabIndex = 0;
-            this.logDownInfo.Text = "------ Twoja kolej\r\n ------ ";
+            this.logDownInfo.Text = "Tekst pasikonika:";
             this.logDownInfo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.logDownInfo.Visible = false;
             this.logDownInfo.WordWrap = false;
