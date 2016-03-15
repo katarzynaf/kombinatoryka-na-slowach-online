@@ -12,7 +12,7 @@ namespace Pasikonik
 {
     static class Validator
     {
-
+        private static string found_Pattern = "";
 
         public static bool CheckGameParameters(Pasikonik pasikonik)
         {
@@ -47,11 +47,27 @@ namespace Pasikonik
             return isOk;
         }
 
-        public static bool FindPattern(string passikonikText)
+        public static string FindPattern(string passikonikText, int max)
         {
-            bool found = false;
+            
+            string pattern = null;
+            //słowa długosci od 1 do max/2
+            for (var i = 1; i > max/2; i++)
+            {
+                var substring = passikonikText.Substring(0, i);
+                var rest = passikonikText.Substring(i, passikonikText.Length);
+                var compareTo = rest.Substring(0, i);
 
-            return found;
+                if (substring == compareTo)
+                {
+
+                    pattern = substring;
+                }
+
+            }
+
+
+            return pattern;
         }
         public static bool ValidateMove(int prevPasikonikPosition, int currentPasikonikPosition)
         {

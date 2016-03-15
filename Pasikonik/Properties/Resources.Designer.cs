@@ -70,7 +70,7 @@ namespace Pasikonik.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Znaleziono wzorzec.
+        ///   Looks up a localized string similar to Wygral komputer. Znaleziono wzorzec :.
         /// </summary>
         internal static string FOUND_PATTERN {
             get {

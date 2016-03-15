@@ -137,7 +137,7 @@
     <value>Wygral komputer</value>
   </data>
   <data name="FOUND_PATTERN" xml:space="preserve">
-    <value>Znaleziono wzorzec</value>
+    <value>Wygral komputer. Znaleziono wzorzec :</value>
   </data>
   <data name="PLAYER_WIN" xml:space="preserve">
     <value>Woohooo! Wygrales </value>

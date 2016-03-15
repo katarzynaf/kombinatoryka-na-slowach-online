@@ -55,7 +55,7 @@ namespace Pasikonik
             this.gameGroupBox = new System.Windows.Forms.GroupBox();
             this.gameSplitContainer = new System.Windows.Forms.SplitContainer();
             this.gameRichTextBox = new System.Windows.Forms.RichTextBox();
-            this.turnInfo = new System.Windows.Forms.TextBox();
+            this.logDownInfo = new System.Windows.Forms.TextBox();
             this.gameParameters.SuspendLayout();
             this.parametersPanel.SuspendLayout();
             this.alphabetGroupBox.SuspendLayout();
@@ -326,7 +326,7 @@ namespace Pasikonik
             // 
             // gameSplitContainer.Panel2
             // 
-            this.gameSplitContainer.Panel2.Controls.Add(this.turnInfo);
+            this.gameSplitContainer.Panel2.Controls.Add(this.logDownInfo);
             this.gameSplitContainer.Size = new System.Drawing.Size(770, 327);
             this.gameSplitContainer.SplitterDistance = 295;
             this.gameSplitContainer.TabIndex = 2;
@@ -348,20 +348,20 @@ namespace Pasikonik
             this.gameRichTextBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gameRichTextBox_MouseDown);
             this.gameRichTextBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gameRichTextBox_MouseUp);
             // 
-            // turnInfo
+            // logDownInfo
             // 
-            this.turnInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.turnInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.turnInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.turnInfo.Location = new System.Drawing.Point(0, 0);
-            this.turnInfo.Name = "turnInfo";
-            this.turnInfo.ReadOnly = true;
-            this.turnInfo.Size = new System.Drawing.Size(770, 17);
-            this.turnInfo.TabIndex = 0;
-            this.turnInfo.Text = "------ Twoja kolej\r\n ------ ";
-            this.turnInfo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.turnInfo.Visible = false;
-            this.turnInfo.WordWrap = false;
+            this.logDownInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.logDownInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.logDownInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.logDownInfo.Location = new System.Drawing.Point(0, 0);
+            this.logDownInfo.Name = "logDownInfo";
+            this.logDownInfo.ReadOnly = true;
+            this.logDownInfo.Size = new System.Drawing.Size(770, 17);
+            this.logDownInfo.TabIndex = 0;
+            this.logDownInfo.Text = "------ Twoja kolej\r\n ------ ";
+            this.logDownInfo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.logDownInfo.Visible = false;
+            this.logDownInfo.WordWrap = false;
             // 
             // Pasikonik
             // 
@@ -422,7 +422,7 @@ namespace Pasikonik
         public RadioButton qwertyAlphabet;
         public ComboBox difficultyLevelComboBox;
         private SplitContainer gameSplitContainer;
-        private TextBox turnInfo;
+        private TextBox logDownInfo;
 
     }
 }

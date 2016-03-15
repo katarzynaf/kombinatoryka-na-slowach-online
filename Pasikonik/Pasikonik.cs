@@ -18,6 +18,7 @@ namespace Pasikonik
         private int currentPasikonikPosition;
         private int prevPasikonikPosition;
         private string PasikonikRead { get; set; }
+       
 
         private readonly Color PasikonikColor = Color.Green;
         private readonly Color PatternColor = Color.DarkRed;
@@ -98,7 +99,7 @@ namespace Pasikonik
 
                     break;
             }
-
+            
         }
 
 
@@ -116,7 +117,7 @@ namespace Pasikonik
 
         private void ComputerMovement()
         {
-            turnInfo.Visible = false;
+            logDownInfo.Visible = false;
             var insertWord = ""; //biezace slowo
 
             if (!GameEnded)
@@ -138,12 +139,13 @@ namespace Pasikonik
 
             turn = Turn.PLAYER;
             PossibleNoOfLetters = 0;
-            turnInfo.Visible = true;
+            logDownInfo.Visible = true;
         }
 
-        private void AddWord(string insertWord, int currentPasikonikPosition)
+        private void AddWord(string insertWord, int currentPosition)
         {
-            //throw new NotImplementedException();
+             gameRichTextBox.Text = gameRichTextBox.Text.Insert(currentPosition, insertWord);
+             //gameRichTextBox.SelectionStart = currentPosition + insertWord.Length;
         }
 
 
@@ -184,16 +186,10 @@ namespace Pasikonik
         private void gameRichTextBox_MouseDown(object sender, EventArgs e)
         {
             prevPasikonikPosition = currentPasikonikPosition;
-
-            if (gameRichTextBox.Text.Length == 2) gameRichTextBox.SelectionStart = 0;
             //start Selecting
         }
 
-        private string GetPasikonikReadTxt()
-        {
-            //throw new NotImplementedException();
-            return "yolo";
-        }
+
 
         private void gameRichTextBox_MouseUp(object sender, MouseEventArgs e)
         {
@@ -203,19 +199,26 @@ namespace Pasikonik
 
             if (!Validator.ValidateMove(prevPasikonikPosition, currentPasikonikPosition)) return;
 
-            gameRichTextBox.SelectionColor = PasikonikColor;
-                
+            
 
+            // ilosc liter do nastepnej rundy
             if (currentPasikonikPosition - prevPasikonikPosition == 2) PossibleNoOfLetters = 1;
             if (currentPasikonikPosition - prevPasikonikPosition == 1) PossibleNoOfLetters = 2;
 
-            PasikonikRead = GetPasikonikReadTxt();
-            if (!Validator.FindPattern(PasikonikRead)) //nie znaleziono wzorca
+           // gameRichTextBox.SelectionColor = PasikonikColor;
+            PasikonikRead += gameRichTextBox.SelectedText;
+
+
+
+            //szukanie wzrorca
+            var max = int.Parse(maxLengthTextBox.Text);
+            var pattern = Validator.FindPattern(PasikonikRead, max);
+            if (string.IsNullOrEmpty(pattern)) //nie znaleziono wzorca
             {
-                if (PasikonikRead.Length >= int.Parse(maxLengthTextBox.Text))
+                if (PasikonikRead.Length >= max)
                 {
                     GameEnded = true;
-                    MessageBox.Show(Properties.Resources.PLAYER_WIN, Properties.Resources.COMPUTER_WIN,
+                    MessageBox.Show(Properties.Resources.PLAYER_WIN, Properties.Resources.PLAYER_WIN,
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -230,9 +233,23 @@ namespace Pasikonik
             {
                 GameEnded = true;
 
-                MessageBox.Show(Properties.Resources.COMPUTER_WIN, Properties.Resources.COMPUTER_WIN,
+                MessageBox.Show(Properties.Resources.FOUND_PATTERN, Properties.Resources.COMPUTER_WIN,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                gameRichTextBox.Find(pattern);
+                gameRichTextBox.SelectionColor = PatternColor;
+
+
+                logDownInfo.Text = pattern;
             }
+
+            gameRichTextBox.Find(PasikonikRead);
+            gameRichTextBox.SelectionColor = PasikonikColor;
+            
+            gameRichTextBox.SelectionStart = currentPasikonikPosition;
+            gameRichTextBox.SelectionLength = 0;
+           // gameRichTextBox.SelectionColor = gameRichTextBox.ForeColor;
+    
         }
 
 
